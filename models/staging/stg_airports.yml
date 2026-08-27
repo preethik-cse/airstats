@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: stg_airports
+    description: >
+      Cleaned airport reference data sourced from the daily Airbyte file sync.
+      One row represents one airport.
+
+    columns:
+      - name: airport_id
+        description: Unique identifier assigned by the OurAirports dataset.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: airport_code
+        description: Primary airport identifier from the source dataset.
+
+      - name: airport_name
+        description: Human-readable airport name.
+
+      - name: airport_type
+        description: Classification of the airport or facility.
+
+      - name: country_code
+        description: ISO 3166-1 alpha-2 country code.
+
+      - name: region_code
+        description: ISO region code.
+
+      - name: latitude_in_degree
+        description: Airport latitude in decimal degrees.
+
+      - name: longitude_in_degree
+        description: Airport longitude in decimal degrees.
