@@ -1,6 +1,20 @@
-with source_data AS (
-    Select *
-    FROM {{ source('our_airports_raw', 'ourairports_csv') }}
+with source_data as (
+
+    select *
+    from {{ source('our_airports_raw', 'ourairports_csv') }}
+
+),
+
+deduplicated as (
+
+    select *
+    from source_data
+
+    qualify row_number() over (
+        partition by id
+        order by _airbyte_extracted_at desc, _airbyte_raw_id desc
+    ) = 1
+
 ),
 staged as (
 
@@ -37,7 +51,7 @@ staged as (
 
         -- Note: We completely omitted _AIRBYTE_RAW_ID, _AIRBYTE_EXTRACTED_AT, etc.
 
-    from source_data
+    from deduplicated
 
 )
 
