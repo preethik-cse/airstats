@@ -1,0 +1,33 @@
+version: 2
+
+snapshots:
+  - name: snap_airports_history
+    description: >
+      Historical record of airport attribute changes. Each version records the
+      period during which an airport's attributes were valid.
+
+    relation: ref('stg_airports')
+
+    config:
+      unique_key: airport_id
+      strategy: check
+      check_cols:
+        - airport_code
+        - airport_name
+        - airport_type
+        - scheduled_service
+        - country_code
+        - region_code
+        - municipality
+        - latitude_in_degree
+        - longitude_in_degree
+        - elevation_ft
+        - gps_code
+        - iata_code
+        - icao_code
+        - local_code
+        - continent
+        - keywords
+        - home_link
+        - wikipedia_link
+      hard_deletes: invalidate
