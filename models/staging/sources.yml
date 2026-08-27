@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: our_airports_raw
+    database: RAW
+    schema: OUR_AIRPORTS
+    tables:
+      - name: ourairports_csv
+        config:
+          loaded_at_field: _AIRBYTE_EXTRACTED_AT
+          freshness:
+            warn_after: {count: 24, period: hour}
+            error_after: {count: 36, period: hour}
