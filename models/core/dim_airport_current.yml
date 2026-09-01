@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: dim_airport_current
+    description: >
+      Current business-approved airport dimension. Contains one active record
+      per airport, sourced from the airport history snapshot.
+
+    columns:
+      - name: airport_id
+        description: Stable business identifier for the airport.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: airport_version_id
+        description: Identifier for the current historical version of the airport.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: airport_record_valid_from
+        description: Timestamp when the current airport version became valid.
+        data_tests:
+          - not_null
+
+      - name: airport_name
+        description: Human-readable airport name.
+
+      - name: airport_type
+        description: Airport facility classification.
+
+      - name: country_code
+        description: ISO 3166-1 alpha-2 country code.
