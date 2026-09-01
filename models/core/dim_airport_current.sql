@@ -2,7 +2,7 @@
 with current_airports as (
     Select * 
     from {{ ref('snap_airports_history') }}
-    WHERE DBT_VALID_TO IS NOT NULL
+    WHERE DBT_VALID_TO IS NULL
 )
 
 Select 
