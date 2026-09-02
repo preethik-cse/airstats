@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: mart_airport_country_coverage
+    description: >
+      Country-level airport coverage metrics for reporting and dashboard use.
+      Each row represents one country code. UNKNOWN represents airports whose
+      source country code is missing.
+
+    columns:
+      - name: country_code
+        description: ISO 3166-1 alpha-2 country code, or UNKNOWN when missing in the source.
+        data_tests:
+          - not_null
+          - unique
+
+      - name: total_airports
+        description: Total number of current airports in the country.
+        data_tests:
+          - not_null
+
+      - name: scheduled_service_airports
+        description: Number of airports that provide scheduled service.
+
+      - name: large_airports
+        description: Number of large airports.
+
+      - name: medium_airports
+        description: Number of medium airports.
+
+      - name: small_airports
+        description: Number of small airports.
+
+      - name: heliports
+        description: Number of heliports.
+
+      - name: seaplane_bases
+        description: Number of seaplane bases.
+
+      - name: balloonports
+        description: Number of balloonports.
+
+      - name: closed_airports
+        description: Number of closed airports.
