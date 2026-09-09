@@ -1,0 +1,14 @@
+version: 2
+
+models:
+- name: mart_airport_region_coverage
+  description: Region-level airport coverage metrics. Each row represents one
+      country, region, airport type, and scheduled service combination.
+  tests:
+    - dbt_utils.unique_combination_of_columns:
+        arguments:
+          combination_of_columns:
+            - country_code
+            - region_code
+            - airport_type
+            - scheduled_service
