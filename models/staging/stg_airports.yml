@@ -21,6 +21,19 @@ models:
 
       - name: airport_type
         description: Classification of the airport or facility.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                - large_airport
+                - medium_airport
+                - small_airport
+                - heliport
+                - seaplane_base
+                - balloonport
+                - closed
+
+
 
       - name: country_code
         description: ISO 3166-1 alpha-2 country code.
@@ -33,3 +46,12 @@ models:
 
       - name: longitude_in_degree
         description: Airport longitude in decimal degrees.
+
+      - name: scheduled_service
+        description: Indicates whether the airport has scheduled passenger service.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                - "yes"
+                - "no"

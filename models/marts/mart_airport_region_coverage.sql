@@ -3,7 +3,7 @@
 with airports as (
 
     select
-        coalesce(region_code, 'UNKNOWN') as region_code,
+       {{ standardize_missing('region_code') }} as region_code,
         airport_type,
         scheduled_service
     from {{ ref('dim_airport_current') }}
