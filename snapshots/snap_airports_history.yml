@@ -9,6 +9,7 @@ snapshots:
     relation: ref('stg_airports')
 
     config:
+      schema: CORE
       unique_key: airport_id
       strategy: check
       check_cols:
