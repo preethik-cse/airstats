@@ -31,7 +31,7 @@ models:
                 - heliport
                 - seaplane_base
                 - balloonport
-                - closed
+                - closed_airport
 
 
 
